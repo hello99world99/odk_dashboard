@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -30,8 +31,13 @@ public class ApprenantController {
         return "Apprenant modifié avec success...";
     }
 
-    @GetMapping("/get")
-    public List<Apprenant> getApprenantById(){
+    @GetMapping("/get/{id}")
+    public Optional<Apprenant> getApprenantById(@PathVariable("id") Long id){
+        return apprenantServiceImp.getApprenantById(id);
+    }
+
+    @GetMapping("/all")
+    public List<Apprenant> getAllApprenant(){
         return (List<Apprenant>) apprenantServiceImp.getAllApprenant();
     }
 
