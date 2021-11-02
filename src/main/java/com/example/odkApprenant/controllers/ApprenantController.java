@@ -1,7 +1,9 @@
 package com.example.odkApprenant.controllers;
 
 import com.example.odkApprenant.model.Apprenant;
+import com.example.odkApprenant.model.Formateur;
 import com.example.odkApprenant.services.ApprenantServiceImp;
+import com.example.odkApprenant.services.FormateurServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
