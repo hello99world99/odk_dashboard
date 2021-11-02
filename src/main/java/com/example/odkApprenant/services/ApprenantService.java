@@ -9,7 +9,7 @@ import java.util.Optional;
 @Service
 public interface ApprenantService {
     public void saveApprenant(Apprenant apprenant);
-    public void editApprenant(Apprenant apprenant);
+    public void editApprenant(Long id, Apprenant apprenant);
     public Optional<Apprenant> getApprenantById(Long id);
     public List<Apprenant> getAllApprenant();
     public void deleteApprenant(Long id);

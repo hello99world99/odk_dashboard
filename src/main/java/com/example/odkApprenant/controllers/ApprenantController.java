@@ -24,8 +24,9 @@ public class ApprenantController {
         return "Enregistrement reussi...";
     }
 
-    @PostMapping("/edit")
-    public String editApprenant(Apprenant apprenant){
+    @PutMapping("/update/{id}")
+    public String editApprenant(@PathVariable("id") Long id, @RequestBody Apprenant apprenant){
+        this.apprenantServiceImp.editApprenant(id, apprenant);
         return "Apprenant modifié avec success...";
     }
 
