@@ -1,9 +1,6 @@
 package com.example.odkApprenant.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Apprenant {
@@ -18,6 +15,18 @@ public class Apprenant {
     private ApprenantStatus apprenantStatus;
     private String dateCreation;
     private String dateModification;
+
+    @OneToOne(orphanRemoval = true)
+    @JoinColumn(name = "presence_id")
+    private Presence presence;
+
+    public Presence getPresence() {
+        return presence;
+    }
+
+    public void setPresence(Presence presence) {
+        this.presence = presence;
+    }
 
     public Long getId() {
         return id;
