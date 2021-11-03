@@ -1,5 +1,6 @@
 package com.example.odkApprenant.controllers;
 
+import com.example.odkApprenant.model.Profil;
 import com.example.odkApprenant.model.Users;
 import com.example.odkApprenant.services.UsersServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,9 +53,9 @@ public class UsersController {
     }
 
     //Recuperer tous les formateurs
-    @GetMapping("/frmt/all")
-    public List<Users> getAllFrmt(String profil){
-        return this.usersServiceImp.getAllFrmt(profil);
+    @GetMapping("/users/{profil}")
+    public List<Users> getAllUserByProfil(@PathVariable("profil") Profil profil){
+        return this.usersServiceImp.getAllUsersByProfil(profil);
     }
 
     @DeleteMapping("/user/delete/{id}")

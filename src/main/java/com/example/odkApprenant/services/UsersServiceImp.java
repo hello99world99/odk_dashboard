@@ -1,5 +1,6 @@
 package com.example.odkApprenant.services;
 
+import com.example.odkApprenant.model.Profil;
 import com.example.odkApprenant.model.Users;
 import com.example.odkApprenant.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +58,7 @@ public class UsersServiceImp implements UsersService{
     }
 
     @Override
-    public List<Users> getAllFrmt(String profil) {
+    public List<Users> getAllUsersByProfil(Profil profil) {
         return this.usersRepository.getUsersByProfil(profil);
     }
 }

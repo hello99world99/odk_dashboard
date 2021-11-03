@@ -1,5 +1,6 @@
 package com.example.odkApprenant.services;
 
+import com.example.odkApprenant.model.Profil;
 import com.example.odkApprenant.model.Users;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ public interface UsersService {
     public void editUsers(Long id, Users users);
     public Optional<Users> getUsersById(Long id);
     public List<Users> getAllUsers();
-    public List<Users> getAllFrmt(String profil);
+    public List<Users> getAllUsersByProfil(Profil profil);
     public void deleteUsers(Long id);
     public Users getAuth(String login, String password);
 }
