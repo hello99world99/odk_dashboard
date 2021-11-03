@@ -1,5 +1,5 @@
 package com.example.odkApprenant.model;
 
-public enum ApprenantStatus {
+public enum UserStatus {
     Activer, Desactiver
 }
