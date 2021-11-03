@@ -10,6 +10,5 @@ import java.util.List;
 @Repository
 public interface UsersRepository extends JpaRepository<Users, Long> {
     public Users findByLoginAndPassword(String login, String password);
-
     public List<Users> getUsersByProfil(Profil profil);
 }

@@ -52,12 +52,13 @@ public class UsersController {
         return this.usersServiceImp.getAllUsers();
     }
 
-    //Recuperer tous les formateurs
+    //Recuperer les utilisateurs par profil
     @GetMapping("/users/{profil}")
     public List<Users> getAllUserByProfil(@PathVariable("profil") Profil profil){
         return this.usersServiceImp.getAllUsersByProfil(profil);
     }
 
+    //Supprimer un utilisateur par son id
     @DeleteMapping("/user/delete/{id}")
     public String deleteAnUsers(@PathVariable("id") Long id){
         this.usersServiceImp.deleteUsers(id);

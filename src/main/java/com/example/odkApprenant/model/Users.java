@@ -14,7 +14,8 @@ import java.util.Date;
 @ToString
 @Entity
 public class Users {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO) Long id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nom;
     private String prenom;
     private Integer age;
