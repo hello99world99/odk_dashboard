@@ -5,6 +5,7 @@ import com.example.odkApprenant.services.PresenceServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -22,5 +23,10 @@ public class PresenceController {
     @GetMapping("/presence/get")
     public List<PresenceList> getAllPresenceList(){
         return this.presenceServiceImp.getAllPresenceList();
+    }
+
+    @GetMapping("/presence/today")
+    public List<PresenceList> getTodayPresenceList(){
+        return this.presenceServiceImp.getTodayPresenceList(LocalDate.now());
     }
 }

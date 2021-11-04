@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.time.LocalTime;
 
 @Data
 @AllArgsConstructor
@@ -21,6 +22,7 @@ public class PresenceList {
     @ManyToOne
     @JoinColumn(name = "users_id")
     private Users users;
-    private LocalDateTime heure_arrive = LocalDateTime.now();
-    private int heure_depart;
+    private LocalDate date = LocalDate.now();
+    private LocalTime heure_arrive = LocalTime.now();
+    private LocalTime heure_depart;
 }

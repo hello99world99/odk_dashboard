@@ -4,6 +4,10 @@ import com.example.odkApprenant.model.PresenceList;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Repository
 public interface PresenceRepository extends JpaRepository<PresenceList, Long> {
+    public List<PresenceList> getPresenceListByDate(LocalDate localDate);
 }

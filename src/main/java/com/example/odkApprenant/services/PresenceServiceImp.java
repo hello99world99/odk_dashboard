@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -25,9 +26,9 @@ public class PresenceServiceImp implements PresenceService{
         return this.presenceRepository.findAll();
     }
 
-    //Recuperer la liste de présence
-    @GetMapping("/presence/list")
-    public PresenceList getPresenceList(){
-        return null;
+    @Override
+    public List<PresenceList> getTodayPresenceList(LocalDate localDate) {
+        return this.presenceRepository.getPresenceListByDate(localDate);
     }
+
 }
