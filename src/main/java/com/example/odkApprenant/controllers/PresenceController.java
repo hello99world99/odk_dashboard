@@ -20,7 +20,7 @@ public class PresenceController {
         return "Présence cohée avec succèss...";
     }
 
-    @GetMapping("/presence/get")
+    @GetMapping("/presence/all")
     public List<PresenceList> getAllPresenceList(){
         return this.presenceServiceImp.getAllPresenceList();
     }
