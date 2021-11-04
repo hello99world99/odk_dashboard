@@ -46,12 +46,6 @@ public class UsersController {
         return (List<Users>) usersServiceImp.getAllUsers();
     }
 
-    //Recuperer tous les apprenants
-    @GetMapping("/apprenant/all")
-    public List<Users> getAllApprenant(){
-        return this.usersServiceImp.getAllUsers();
-    }
-
     //Recuperer les utilisateurs par profil
     @GetMapping("/users/{profil}")
     public List<Users> getAllUserByProfil(@PathVariable("profil") Profil profil){
