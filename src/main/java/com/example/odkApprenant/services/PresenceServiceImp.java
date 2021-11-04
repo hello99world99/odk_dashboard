@@ -8,16 +8,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 public class PresenceServiceImp implements PresenceService{
     @Autowired PresenceRepository presenceRepository;
 
-    @Transactional
     @Override
     public void addPresence(PresenceList presenceList) {
-        System.out.println(presenceList);
         this.presenceRepository.save(presenceList);
     }
 
@@ -29,6 +28,16 @@ public class PresenceServiceImp implements PresenceService{
     @Override
     public List<PresenceList> getTodayPresenceList(LocalDate localDate) {
         return this.presenceRepository.getPresenceListByDate(localDate);
+    }
+
+    @Override
+    public List<PresenceList> getMonthPresenceList(LocalDate localDate) {
+        return this.presenceRepository.getPresenceListByDateContaining(localDate);
+    }
+
+    @Override
+    public List<PresenceList> getDateBetween(LocalDate min, LocalDate max) {
+        return this.presenceRepository.getPresenceListByDateBetween(min, max);
     }
 
 }
