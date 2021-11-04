@@ -11,8 +11,11 @@ import javax.transaction.Transactional;
 public class PresenceServiceImp implements PresenceService{
     @Autowired PresenceRepository presenceRepository;
 
+    @Transactional
     @Override
     public void addPresence(PresenceList presenceList) {
+        System.out.println(presenceList);
+        System.out.println(presenceList.getUsers());
         this.presenceRepository.save(presenceList);
     }
 }
