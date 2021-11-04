@@ -27,16 +27,7 @@ public class Users {
     private LocalDateTime dateCreation = LocalDateTime.now();
     private LocalDateTime dateModification = LocalDateTime.now();
     private Profil profil;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "users_id", unique = true)
-    private PresenceList users;
-
-    public PresenceList getUsers() {
-        return users;
-    }
-
-    public void setUsers(PresenceList users) {
-        this.users = users;
-    }
+    @ManyToOne
+    @JoinColumn(name = "presence_list_id")
+    private PresenceList presenceList;
 }

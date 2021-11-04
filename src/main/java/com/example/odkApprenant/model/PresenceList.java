@@ -18,11 +18,8 @@ import java.util.List;
 public class PresenceList {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @NotNull
-    @OneToMany (targetEntity = Users.class, mappedBy = "users", cascade = CascadeType.ALL)
-    @Column(name = "user_id")
-    private List<Users> users;
-
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    private Users users;
     private LocalDateTime localDateTime = LocalDateTime.now();
 }

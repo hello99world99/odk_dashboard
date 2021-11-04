@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class PresenceServiceImp implements PresenceService{
@@ -15,7 +16,11 @@ public class PresenceServiceImp implements PresenceService{
     @Override
     public void addPresence(PresenceList presenceList) {
         System.out.println(presenceList);
-        System.out.println(presenceList.getUsers());
         this.presenceRepository.save(presenceList);
+    }
+
+    @Override
+    public List<PresenceList> getAllPresenceList() {
+        return this.presenceRepository.findAll();
     }
 }
