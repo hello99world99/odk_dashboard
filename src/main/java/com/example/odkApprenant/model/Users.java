@@ -27,7 +27,4 @@ public class Users {
     private LocalDateTime dateCreation = LocalDateTime.now();
     private LocalDateTime dateModification = LocalDateTime.now();
     private Profil profil;
-    @ManyToOne
-    @JoinColumn(name = "presence_list_id")
-    private PresenceList presenceList;
 }

@@ -21,5 +21,6 @@ public class PresenceList {
     @ManyToOne
     @JoinColumn(name = "users_id")
     private Users users;
-    private LocalDateTime localDateTime = LocalDateTime.now();
+    private LocalDateTime heure_arrive = LocalDateTime.now();
+    private int heure_depart;
 }
