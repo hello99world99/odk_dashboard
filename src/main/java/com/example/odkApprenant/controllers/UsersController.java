@@ -15,13 +15,8 @@ public class UsersController {
     @Autowired
     private UsersServiceImp usersServiceImp;
 
-    @GetMapping("")
-    public String getStatus(){
-        return "Ok";
-    }
-
     //Ajouter un utilisateur, l'attribut profile est la principale différence
-    @PostMapping("/users/save")
+    @PostMapping("/user/save")
     public String saveApprenant(@RequestBody Users users){
         this.usersServiceImp.saveUsers(users);
         return "Enregistrement reussi...";
