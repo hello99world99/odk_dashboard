@@ -10,7 +10,7 @@ import java.util.List;
 public interface PresenceService {
     public void addPresence(PresenceList presenceList);
     public List<PresenceList> getAllPresenceList();
-    public List<PresenceList> getTodayPresenceList(LocalDate localDate);
+    public List<PresenceList> getPresenceList(LocalDate localDate);
     public List<PresenceList> getMonthPresenceList(LocalDate localDate);
-    public List<PresenceList> getDateBetween(LocalDate min, LocalDate max);
+    public List<PresenceList> getPresenceList(LocalDate min, LocalDate max);
 }

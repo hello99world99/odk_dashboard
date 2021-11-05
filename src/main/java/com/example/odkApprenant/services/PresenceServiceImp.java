@@ -26,7 +26,7 @@ public class PresenceServiceImp implements PresenceService{
     }
 
     @Override
-    public List<PresenceList> getTodayPresenceList(LocalDate localDate) {
+    public List<PresenceList> getPresenceList(LocalDate localDate) {
         return this.presenceRepository.getPresenceListByDate(localDate);
     }
 
@@ -36,9 +36,7 @@ public class PresenceServiceImp implements PresenceService{
     }
 
     @Override
-    public List<PresenceList> getDateBetween(LocalDate min, LocalDate max) {
-        System.out.println(min);
-        System.out.println(max);
+    public List<PresenceList> getPresenceList(LocalDate min, LocalDate max) {
         return this.presenceRepository.getPresenceListByDateGreaterThanEqualAndDateLessThanEqual(min, max);
     }
 
