@@ -41,10 +41,15 @@ public class PresenceController {
         return this.presenceServiceImp.getMonthPresenceList(month);
     }
 
-    @GetMapping("/users/entre/{start}&{end}")
+    @GetMapping("/presence/entre/{start}&{end}")
     public List<PresenceList> getPresenceListBetween(
             @PathVariable("start") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate start,
             @PathVariable("end") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate end){
         return this.presenceServiceImp.getPresenceList(start, end);
+    }
+
+    @GetMapping("/presence/semaine")
+    public List<PresenceList> getListByWeek(){
+        return this.presenceServiceImp.getPresenceList(LocalDate.now(), 7);
     }
 }
