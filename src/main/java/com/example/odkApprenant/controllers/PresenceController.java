@@ -3,10 +3,14 @@ package com.example.odkApprenant.controllers;
 import com.example.odkApprenant.model.PresenceList;
 import com.example.odkApprenant.services.PresenceServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 public class PresenceController {
@@ -31,15 +35,16 @@ public class PresenceController {
     }
 
     @GetMapping("/presence/month/{month}")
-    public List<PresenceList> getMonthPresenceList(@PathVariable("month") LocalDate month){
-        System.out.println(month);
-        return null; //this.presenceServiceImp.getMonthPresenceList(month);
+    public List<PresenceList> getMonthPresenceList(
+            @PathVariable("month") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate month)
+    {
+        return this.presenceServiceImp.getMonthPresenceList(month);
     }
 
-    @GetMapping("/users/entre/{min}&{max}")
+    @GetMapping("/users/entre/{start}&{end}")
     public List<PresenceList> getPresenceListBetween(
-            @PathVariable("min") LocalDate min,
-            @PathVariable("max") LocalDate max){
-        return this.presenceServiceImp.getDateBetween(min, max);
+            @PathVariable("start") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate start,
+            @PathVariable("end") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate end){
+        return this.presenceServiceImp.getDateBetween(start, end);
     }
 }

@@ -37,7 +37,9 @@ public class PresenceServiceImp implements PresenceService{
 
     @Override
     public List<PresenceList> getDateBetween(LocalDate min, LocalDate max) {
-        return this.presenceRepository.getPresenceListByDateBetween(min, max);
+        System.out.println(min);
+        System.out.println(max);
+        return this.presenceRepository.getPresenceListByDateGreaterThanEqualAndDateLessThanEqual(min, max);
     }
 
 }
