@@ -22,8 +22,6 @@ public interface PresenceService {
     //Get presence list by month
     public List<PresenceList> getPresenceList(int year, int month);
 
-    //public List<PresenceList> getPresenceList(LocalDate localDate, int days);
-
     //Get presence list between two periodes of time
     public List<PresenceList> getPresenceList(LocalDate min, LocalDate max);
 }

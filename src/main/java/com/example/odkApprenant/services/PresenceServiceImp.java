@@ -17,7 +17,7 @@ public class PresenceServiceImp implements PresenceService{
 
     @Autowired PresenceRepository presenceRepository;
 
-    //Ajouter un utilisateur à la liste de présence
+    //Get all presence list
     @Override
     public void addPresence(PresenceList presenceList) {
         this.presenceRepository.save(presenceList);
@@ -40,7 +40,7 @@ public class PresenceServiceImp implements PresenceService{
     public List<PresenceList> getPresenceList(int year, int month, int day) {
         LocalDate now = LocalDate.of(year, month, day);
         LocalDate min = now.with(previousOrSame(DayOfWeek.MONDAY));
-        LocalDate max = now.with(nextOrSame(DayOfWeek.SUNDAY));
+        LocalDate max = now.with(nextOrSame(DayOfWeek.FRIDAY));
         return this.presenceRepository.getPresenceListByDateGreaterThanEqualAndDateLessThanEqual(min, max);
     }
 
