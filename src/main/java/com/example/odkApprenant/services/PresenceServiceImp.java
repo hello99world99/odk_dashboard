@@ -38,10 +38,10 @@ public class PresenceServiceImp implements PresenceService{
     //Get all users by a week
     @Override
     public List<PresenceList> getPresenceList(int year, int month, int day) {
-        LocalDate now = LocalDate.of(year, month, day);
-        LocalDate min = now.with(previousOrSame(DayOfWeek.MONDAY));
-        LocalDate max = now.with(nextOrSame(DayOfWeek.FRIDAY));
-        return this.presenceRepository.getPresenceListByDateGreaterThanEqualAndDateLessThanEqual(min, max);
+        LocalDate week = LocalDate.of(year, month, day);
+        LocalDate monday = week.with(previousOrSame(DayOfWeek.MONDAY));
+        LocalDate friday = week.with(nextOrSame(DayOfWeek.FRIDAY));
+        return this.presenceRepository.getPresenceListByDateGreaterThanEqualAndDateLessThanEqual(monday, friday);
     }
 
     //Get all users by a month
