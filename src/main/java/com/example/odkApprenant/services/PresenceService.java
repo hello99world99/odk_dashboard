@@ -12,6 +12,6 @@ public interface PresenceService {
     public List<PresenceList> getAllPresenceList();
     public List<PresenceList> getPresenceList(LocalDate localDate);
     public List<PresenceList> getPresenceList(LocalDate localDate, int days);
-    public List<PresenceList> getPresenceList(int month);
+    public List<PresenceList> getPresenceList(int year, int month);
     public List<PresenceList> getPresenceList(LocalDate min, LocalDate max);
 }

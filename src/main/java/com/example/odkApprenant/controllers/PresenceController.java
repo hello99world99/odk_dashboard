@@ -31,11 +31,12 @@ public class PresenceController {
         return this.presenceServiceImp.getPresenceList(LocalDate.now());
     }
 
-    @GetMapping("/presence/month/{month}")
+    @GetMapping("/presence/month/{year}-{month}")
     public List<PresenceList> getMonthPresenceList(
+            @PathVariable("year") int year,
             @PathVariable("month") int month)
     {
-        return this.presenceServiceImp.getPresenceList(month);
+        return this.presenceServiceImp.getPresenceList(year, month);
     }
 
     @GetMapping("/presence/entre/{start}&{end}")
