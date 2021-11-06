@@ -35,7 +35,7 @@ public class PresenceController {
     }
 
     //Get presence list by a week
-    @GetMapping("/presence/{year}-{month}-{day}")
+    @GetMapping("/presence/week={year}-{month}-{day}")
     public List<PresenceList> getListByWeek(
             @PathVariable("year") int year,
             @PathVariable("month") int month,
@@ -45,7 +45,7 @@ public class PresenceController {
     }
 
     //Get presence list by month
-    @GetMapping("/presence/month/{year}-{month}")
+    @GetMapping("/presence/month={year}-{month}")
     public List<PresenceList> getMonthPresenceList(
             @PathVariable("year") int year,
             @PathVariable("month") int month)
