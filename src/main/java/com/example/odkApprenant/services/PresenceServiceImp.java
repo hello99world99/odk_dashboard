@@ -17,7 +17,7 @@ public class PresenceServiceImp implements PresenceService{
 
     @Autowired PresenceRepository presenceRepository;
 
-    //Get all presence list
+    //Add an user to presence list
     @Override
     public void addPresence(PresenceList presenceList) {
         this.presenceRepository.save(presenceList);

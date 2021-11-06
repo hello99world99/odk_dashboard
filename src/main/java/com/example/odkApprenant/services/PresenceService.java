@@ -8,6 +8,8 @@ import java.util.List;
 
 @Service
 public interface PresenceService {
+
+    //Add to an user to presence list
     public void addPresence(PresenceList presenceList);
 
     //Get all presence list

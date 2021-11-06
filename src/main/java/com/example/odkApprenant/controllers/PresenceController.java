@@ -21,11 +21,13 @@ public class PresenceController {
         return "Présence cohée avec succèss...";
     }
 
+    //Get all presence list
     @GetMapping("/presence/all")
     public List<PresenceList> getAllPresenceList(){
         return this.presenceServiceImp.getAPresenceList();
     }
 
+    //Get presence list by date
     @GetMapping("/presence/date={date}")
     public List<PresenceList> getTodayPresenceList(
             @PathVariable("date") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate date){
