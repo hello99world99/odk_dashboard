@@ -33,9 +33,9 @@ public class PresenceController {
 
     @GetMapping("/presence/month/{month}")
     public List<PresenceList> getMonthPresenceList(
-            @PathVariable("month") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate month)
+            @PathVariable("month") int month)
     {
-        return this.presenceServiceImp.getMonthPresenceList(month);
+        return this.presenceServiceImp.getPresenceList(month);
     }
 
     @GetMapping("/presence/entre/{start}&{end}")

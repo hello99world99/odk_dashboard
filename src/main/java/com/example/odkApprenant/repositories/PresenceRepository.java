@@ -11,6 +11,6 @@ import java.util.List;
 public interface PresenceRepository extends JpaRepository<PresenceList, Long> {
     public List<PresenceList> getPresenceListByDate(LocalDate localDate);
     public List<PresenceList> getPresenceListByDateGreaterThanEqualAndDateLessThanEqual(LocalDate min, LocalDate max);
-    public List<PresenceList> getPresenceListByDateContaining(LocalDate localDate);
+    //public List<PresenceList> getPresenceListByDateContaining(String month);
     public List<PresenceList> getPresenceListByDateGreaterThanEqual(LocalDate localDate);
 }

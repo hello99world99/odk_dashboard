@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 public class PresenceServiceImp implements PresenceService{
+
     @Autowired PresenceRepository presenceRepository;
 
     @Override
@@ -33,8 +34,11 @@ public class PresenceServiceImp implements PresenceService{
     }
 
     @Override
-    public List<PresenceList> getMonthPresenceList(LocalDate localDate) {
-        return this.presenceRepository.getPresenceListByDateContaining(localDate);
+    public List<PresenceList> getPresenceList(int month) {
+        LocalDate initial = LocalDate.of(LocalDate.now().getYear(), month, 1);
+        LocalDate start = initial.withDayOfMonth(1);
+        LocalDate end = initial.withDayOfMonth(initial.lengthOfMonth());
+        return this.presenceRepository.getPresenceListByDateGreaterThanEqualAndDateLessThanEqual(start, end);
     }
 
     @Override
