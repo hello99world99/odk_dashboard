@@ -9,9 +9,21 @@ import java.util.List;
 @Service
 public interface PresenceService {
     public void addPresence(PresenceList presenceList);
-    public List<PresenceList> getAllPresenceList();
+
+    //Get all presence list
+    public List<PresenceList> getAPresenceList();
+
+    //Get presence list by date
     public List<PresenceList> getPresenceList(LocalDate localDate);
-    public List<PresenceList> getPresenceList(LocalDate localDate, int days);
+
+    //Get presence list by week
+    public List<PresenceList> getPresenceList(int year, int month, int day);
+
+    //Get presence list by month
     public List<PresenceList> getPresenceList(int year, int month);
+
+    //public List<PresenceList> getPresenceList(LocalDate localDate, int days);
+
+    //Get presence list between two periodes of time
     public List<PresenceList> getPresenceList(LocalDate min, LocalDate max);
 }

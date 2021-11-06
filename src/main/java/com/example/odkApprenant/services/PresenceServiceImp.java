@@ -5,10 +5,11 @@ import com.example.odkApprenant.repositories.PresenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import static java.time.temporal.TemporalAdjusters.previousOrSame;
+import static java.time.temporal.TemporalAdjusters.nextOrSame;
+
+import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.List;
 
 @Service
@@ -22,12 +23,13 @@ public class PresenceServiceImp implements PresenceService{
         this.presenceRepository.save(presenceList);
     }
 
-    //Récuperer tous les utilisateurs de la liste liste de présence
+    //Get all presence list
     @Override
-    public List<PresenceList> getAllPresenceList() {
+    public List<PresenceList> getAPresenceList() {
         return this.presenceRepository.findAll();
     }
 
+    //Get presence list by date
     @Override
     public List<PresenceList> getPresenceList(LocalDate localDate) {
         return this.presenceRepository.getPresenceListByDate(localDate);
@@ -35,16 +37,11 @@ public class PresenceServiceImp implements PresenceService{
 
     //Get all users by a week
     @Override
-    public List<PresenceList> getPresenceList(LocalDate localDate, int days) {
-        Calendar c = Calendar.getInstance();
-        System.out.println(c);
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-        for (int i = 0; i < 5; i++) {
-            System.out.println(df.format(c.getTime()));
-            c.add(Calendar.DATE, 1);
-        }
-        return this.presenceRepository.getPresenceListByDateGreaterThanEqual(localDate.minusDays(days));
+    public List<PresenceList> getPresenceList(int year, int month, int day) {
+        LocalDate now = LocalDate.of(year, month, day);
+        LocalDate min = now.with(previousOrSame(DayOfWeek.MONDAY));
+        LocalDate max = now.with(nextOrSame(DayOfWeek.SUNDAY));
+        return this.presenceRepository.getPresenceListByDateGreaterThanEqualAndDateLessThanEqual(min, max);
     }
 
     //Get all users by a month

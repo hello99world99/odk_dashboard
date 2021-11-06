@@ -23,14 +23,26 @@ public class PresenceController {
 
     @GetMapping("/presence/all")
     public List<PresenceList> getAllPresenceList(){
-        return this.presenceServiceImp.getAllPresenceList();
+        return this.presenceServiceImp.getAPresenceList();
     }
 
-    @GetMapping("/presence/today")
-    public List<PresenceList> getTodayPresenceList(){
-        return this.presenceServiceImp.getPresenceList(LocalDate.now());
+    @GetMapping("/presence/date={date}")
+    public List<PresenceList> getTodayPresenceList(
+            @PathVariable("date") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate date){
+        return this.presenceServiceImp.getPresenceList(date);
     }
 
+    //Get presence list by a week
+    @GetMapping("/presence/{year}-{month}-{day}")
+    public List<PresenceList> getListByWeek(
+            @PathVariable("year") int year,
+            @PathVariable("month") int month,
+            @PathVariable("day") int day
+    ){
+        return this.presenceServiceImp.getPresenceList(year, month, day);
+    }
+
+    //Get presence list by month
     @GetMapping("/presence/month/{year}-{month}")
     public List<PresenceList> getMonthPresenceList(
             @PathVariable("year") int year,
@@ -39,6 +51,7 @@ public class PresenceController {
         return this.presenceServiceImp.getPresenceList(year, month);
     }
 
+    //Get presence list between two periodes of time
     @GetMapping("/presence/entre/{start}&{end}")
     public List<PresenceList> getPresenceListBetween(
             @PathVariable("start") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate start,
@@ -46,8 +59,4 @@ public class PresenceController {
         return this.presenceServiceImp.getPresenceList(start, end);
     }
 
-    @GetMapping("/presence/semaine")
-    public List<PresenceList> getListByWeek(){
-        return this.presenceServiceImp.getPresenceList(LocalDate.now(), 7);
-    }
 }
