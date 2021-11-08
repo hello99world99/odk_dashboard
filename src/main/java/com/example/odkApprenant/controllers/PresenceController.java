@@ -18,14 +18,13 @@ public class PresenceController {
 
     @PostMapping("/presence/add")
     public String addPrence(@RequestBody PresenceList presenceList){
-        this.presenceServiceImp.addPresence(presenceList);
-        return "Présence cohée avec succèss...";
+        return this.presenceServiceImp.addPresence(presenceList);
     }
 
     //Get all presence list
     @GetMapping("/presence/all")
     public List<PresenceList> getAllPresenceList(){
-        return this.presenceServiceImp.getAPresenceList();
+        return this.presenceServiceImp.getPresenceList();
     }
 
     //Get presence list by date

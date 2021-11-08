@@ -19,13 +19,21 @@ public class PresenceServiceImp implements PresenceService{
 
     //Add an user to presence list
     @Override
-    public void addPresence(PresenceList presenceList) {
-        this.presenceRepository.save(presenceList);
+    public String addPresence(PresenceList presenceList) {
+        PresenceList user = this.presenceRepository.getPresenceListByDateAndUsers(
+                LocalDate.now(), presenceList.getUsers()
+        );
+        if (user==null){
+            this.presenceRepository.save(presenceList);
+            return "Apprenant ajouter avec succèss";
+        }else{
+            return "L'apprenant existe déjà pour la séance...";
+        }
     }
 
     //Get all presence list
     @Override
-    public List<PresenceList> getAPresenceList() {
+    public List<PresenceList> getPresenceList() {
         return this.presenceRepository.findAll();
     }
 

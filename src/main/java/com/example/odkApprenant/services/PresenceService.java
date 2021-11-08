@@ -10,10 +10,10 @@ import java.util.List;
 public interface PresenceService {
 
     //Add to an user to presence list
-    public void addPresence(PresenceList presenceList);
+    public String addPresence(PresenceList presenceList);
 
     //Get all presence list
-    public List<PresenceList> getAPresenceList();
+    public List<PresenceList> getPresenceList();
 
     //Get presence list by date
     public List<PresenceList> getPresenceList(LocalDate localDate);
